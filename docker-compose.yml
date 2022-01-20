@@ -1,0 +1,79 @@
+version: '2'
+services:
+  server:
+    image: nanopub/server
+    restart: unless-stopped
+    depends_on:
+      - db
+      - rdfsink
+    environment:
+      - NPS_MONGODB_HOST=db
+      - NPS_COLLECT_NANOPUBS_ENABLED=true
+#      - NPS_PUBLIC_URL=http://.../
+      - NPS_POST_NEW_NANOPUBS_TO=http://rdfsink:80
+      - NPS_WAIT_MS_BEFORE_PEER_SCAN=1000
+    ports:
+      - 7880:8080
+  db:
+    image: nanopub/mongo
+#    image: mongo
+    restart: unless-stopped
+    volumes:
+      - ./data/mongodb:/data/db
+#    ports:
+#      - 27017:27017
+  rdfsink:
+    image: nanopub/rdfsink
+    restart: unless-stopped
+    depends_on:
+      - virtuoso
+    environment:
+      - ENDPOINT=http://virtuoso:1111/
+      - UPDATE_ENDPOINT=http://virtuoso:1111/
+      - USERNAME=dba
+      - PASSWORD=dba
+      - MODULE=nanopub-signed
+      - REPO_TYPE=virtuoso
+    volumes:
+      - ./data/rdfsink:/data
+  virtuoso:
+    image: nanopub/virtuoso
+#    image: tenforce/virtuoso
+#    image: openlink/virtuoso-opensource-7:latest
+    restart: unless-stopped
+    ports:
+      - 7883:8890
+#      - 1111:1111
+    environment:
+#      - SPARQL_UPDATE=true
+      - DBA_PASSWORD=dba
+      - VIRT_SPARQL_MaxQueryExecutionTime=600
+      - VIRT_SPARQL_MaxQueryCostEstimationTime=0
+    volumes:
+      - ./data/virtuoso:/data
+#      - ./data/virtuoso:/database  # for openlink/virtuoso-opensource-7
+  grlc:
+    image: nanopub/grlc
+#    image: clariah/grlc:dev
+    restart: unless-stopped
+#    ports:
+#     - 8001:80
+#     - 8001:8088
+    environment:
+     - GRLC_SPARQL_ENDPOINT=http://virtuoso:8890/sparql/
+     - USERMAP_GID=1000
+     - USERMAP_UID=1000
+#    - DEBUG=true
+#    volumes:
+#     - ./data/grlc/nanopub-api:/home/grlc/queries
+  nginx:
+    image: nanopub/nginx
+    restart: unless-stopped
+    ports:
+      - 7881:80
+  ldf:
+    image: nanopub/ldf
+    ports:
+      - 7882:3000
+#    environment:
+#      - BASEURL=http://.../
