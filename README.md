@@ -16,13 +16,17 @@ the Virtuoso triple store is made available via SPARQL.
 
 A service to publish and individually retrieve nanopublications.
 
-<h3 id="grlc-np-api">grlc Nanopub API</h3>
+<h3 id="grlc-np-api">grlc Signed Nanopub API</h3>
 
 The [grlc](https://grlc.io)-based [nanopub-api](https://github.com/peta-pico/nanopub-api)
 running on all the signed nanopublications.
 
-<h3 id="np-ldf-server">Nanopub LDF Server</h3>
+<h3 id="np-ldf-server">Signed Nanopub LDF Server</h3>
 
 A service providing [Linked Data Fragments (LDF)](https://linkeddatafragments.org/) access
 to all the signed nanopublications.
+
+<h3 id="np-sparql-api">Signed Nanopub SPARQL API</h3>
+
+A service providing SPARQL access to all the signed nanopublications.
 
