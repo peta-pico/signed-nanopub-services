@@ -29,5 +29,5 @@ Stopping virtuoso:
 
 Create new zip file:
 
-    $ tar --exclude=data/virtuoso/virtuoso.log --exclude=data/virtuoso/dumps --exclude=data/virtuoso/virtuoso.trx --exclude=data/virtuoso/.dba_pwd_set -czvf virtuoso.tar.gz data/virtuoso
+    $ tar --exclude=data/virtuoso/virtuoso.log --exclude=data/virtuoso/dumps --exclude=data/virtuoso/virtuoso.trx --exclude=data/virtuoso/.dba_pwd_set -czvf signed-virtuoso0.tar.gz data/virtuoso
 

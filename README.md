@@ -12,11 +12,11 @@ the Virtuoso triple store is made available via SPARQL.
 
 ## Pre-Packaged Data
 
-    $ wget https://zenodo.org/record/5888258/files/mongodb0.tar.gz
+    $ wget https://zenodo.org/record/5912857/files/mongodb0.tar.gz
     $ tar -xvzf mongodb0.tar.gz && rm mongodb0.tar.gz
 
-    $ wget https://zenodo.org/record/5888258/files/signed-virtuoso.tar.gz
-    $ tar -xvzf signed-virtuoso.tar.gz && rm signed-virtuoso.tar.gz
+    $ wget https://zenodo.org/record/5912857/files/signed-virtuoso0.tar.gz
+    $ tar -xvzf signed-virtuoso0.tar.gz && rm signed-virtuoso0.tar.gz
 
 
 ## Services
