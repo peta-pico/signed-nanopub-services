@@ -20,7 +20,7 @@ Execute shell in container:
 
 Reset password in container (replace "PASSWORD" with actual password):
 
-    # echo "user_set_password('dba', 'dba');\nexit;" | isql-v -U dba -P PASSWORD
+    # echo "user_set_password('dba', 'dba');\ncheckpoint;\nexit;" | isql-v -U dba -P PASSWORD
     # exit
 
 Stopping virtuoso:
