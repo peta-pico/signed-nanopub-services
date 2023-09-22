@@ -14,4 +14,4 @@ services:
       - PASSWORD=replace-this-with-a-strong-password
   virtuoso:
     environment:
-      - DBA_PASSWORD=put-here-the-same-password-as-above
+      - DBA_PASSWORD=put-here-the-same-password-as-above  # The password MUST NOT contain special characters like $ or /
