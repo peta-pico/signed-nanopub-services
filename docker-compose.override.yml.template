@@ -1,8 +1,12 @@
 services:
   server:
     environment:
+      - NPS_MONGODB_HOST=172.17.0.1  # use shared MongoDB
       - NPS_PUBLIC_URL=http://server.np.YOUR.SERVER.DOMAIN/
       - 'NPS_POST_NEW_NANOPUBS_TO=http://rdfsink:80 http://172.17.0.1:9300'
+  db:  # disable when shared MongoDB is used
+    deploy:
+      replicas: 0
   ldf:
     environment:
       - BASEURL=http://ldf.np.YOUR.SERVER.DOMAIN/
