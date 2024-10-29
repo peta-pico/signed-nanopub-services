@@ -5,3 +5,4 @@
 /scratch
 /docker-compose.override.yml
 *.gz
+/bin/
